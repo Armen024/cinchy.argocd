@@ -7,7 +7,7 @@ resources:
 - istio-resource.yaml
 - istio-virtualservice.yaml
 - istio-injection.yaml
-- istio-secrets.yaml
+# - istio-secrets.yaml
 - istio-destinationrules.yaml
 - istio-peerauthentication.yaml
 - istio.yaml
