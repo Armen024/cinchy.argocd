@@ -1,0 +1,106 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../../app_manifests/platform_components
+namespace: argocd
+patches:
+- path: patch.yaml
+  target:
+    kind: Application
+patchesJson6902:
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: base
+  patch: |-
+    - op: replace
+      path: /spec/source/path
+      value: environment_kustomizations/cinchy-nonprod/development/base
+    - op: replace
+      path: /metadata/name
+      value: development-base
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: connections
+  patch: |-
+    - op: replace
+      path: /spec/source/path
+      value: environment_kustomizations/cinchy-nonprod/development/connections
+    - op: replace
+      path: /metadata/name
+      value: development-connections
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: event-listener
+  patch: |-
+    - op: replace
+      path: /spec/source/path
+      value: environment_kustomizations/cinchy-nonprod/development/event-listener
+    - op: replace
+      path: /metadata/name
+      value: development-event-listener
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: meta-forms
+  patch: |-
+    - op: replace
+      path: /spec/source/path
+      value: environment_kustomizations/cinchy-nonprod/development/meta-forms
+    - op: replace
+      path: /metadata/name
+      value: development-meta-forms
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: idp
+  patch: |-
+    - op: replace
+      path: /spec/source/path
+      value: environment_kustomizations/cinchy-nonprod/development/idp
+    - op: replace
+      path: /metadata/name
+      value: development-idp
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: worker
+  patch: |-
+    - op: replace
+      path: /spec/source/path
+      value: environment_kustomizations/cinchy-nonprod/development/worker
+    - op: replace
+      path: /metadata/name
+      value: development-worker
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: web
+  patch: |-
+    - op: replace
+      path: /spec/source/path
+      value: environment_kustomizations/cinchy-nonprod/development/web
+    - op: replace
+      path: /metadata/name
+      value: development-web
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: maintenance-cli
+  patch: |-
+    - op: replace
+      path: /spec/source/path
+      value: environment_kustomizations/cinchy-nonprod/development/maintenance-cli
+    - op: replace
+      path: /metadata/name
+      value: development-maintenance-cli
